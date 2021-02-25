@@ -140,7 +140,7 @@ p {
 
 /* Home */
 #home {
-  background: url('imgs/home-background.png') center/cover no-repeat;
+  background: url('imgs/homebackground.png') center/cover no-repeat;
   padding: 40px;
   text-align: center;
 }
@@ -189,6 +189,7 @@ p {
 .major__icon {
   width: 170px;
   height: 170px;
+  /* height만큼 해주면 수직의 중간으로 옴 */
   line-height: 170px;
   font-size: 70px;
   margin: auto;
