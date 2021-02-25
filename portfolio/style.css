@@ -62,6 +62,8 @@ button {
   cursor: pointer;
   border: none;
   outline: none;
+  /* 아이폰 사용자는 꼭 button의 패딩을 0으로 설정해 주셔야 해요 */
+  padding: 0;
 }
 
 /* Typography */
@@ -146,7 +148,7 @@ p {
 
 /* Home */
 #home {
-  background: url('imgs/home-background.png') center/cover no-repeat;
+  background: url('imgs/homebackground.png') center/cover no-repeat;
   padding: 40px;
   padding-top: 120px;
   text-align: center;
@@ -174,6 +176,9 @@ p {
   border-radius: var(--size-border-radius);
 }
 
+.home__contact:hover {
+  background-color: var(--color-orange);
+}
 /* Section common */
 .section {
   padding: 50px;
@@ -311,6 +316,7 @@ p {
   border-radius: var(--size-border-radius);
   font-size: var(--font-regular);
   padding: 8px 48px;
+  position: relative;
 }
 
 .category__btn.selected,
@@ -333,9 +339,9 @@ p {
   height: 24px;
   line-height: 24px;
   display: inline-block;
-  position: relative;
+  position: absolute;
   top: -20px;
-  left: 4px;
+  right: 16px;
   opacity: 0;
   transition: all var(--animation-duration) ease-in;
 }
@@ -489,6 +495,7 @@ p {
   color: var(--color-white);
   background-color: var(--color-pink);
   border-radius: 50%;
+   /* display none을 하면 애니메이션이 안먹음(사라졌다가 나오기 때문) 그래서 opacity를 0으로, 보일땐 1로줌 하지만 opacity를 0으로 주면 보이지는 않지만 눌러지기 때문에 pointer-event를 none으로 줘서 클릭 안되게 만듦 */
   opacity: 0;
   pointer-events: none;
   transition: opacity 300ms ease-in;
@@ -501,8 +508,20 @@ p {
 
 /* For below 768px screen width */
 @media screen and (max-width: 768px) {
+  :root {
+    /* Font size */
+    --font-large: 30px;
+    --font-medium: 18px;
+    --font-regular: 16px;
+    --font-small: 14px;
+    --font-micro: 12px;
+  }
+
   .navbar__toggle-btn {
     display: block;
+    top: 16px;
+    right: 16px;
+    font-size: var(--font-medium);
   }
 
   #navbar {
@@ -525,24 +544,60 @@ p {
     display: block;
   }
 
+  .section {
+    padding: 16px;
+    padding-top: 40px;
+  }
+
   .about__majors {
     flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 0px;
   }
 
   .major {
-    margin-bottom: 38px;
+    margin-bottom: 30px;
   }
 
   .skillset {
     flex-direction: column;
   }
 
+  .category__btn {
+    margin: 4px 0;
+    width: 100%;
+  }
+
   .project {
     flex-grow: 1;
   }
 
+  .testimonial {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .testimonial__avatar {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
+  }
+
+  .testimonial__avatar:nth-child(even),
+  .testimonial__avatar:nth-child(odd) {
+    margin: 0;
+    margin-bottom: 8px;
+  }
+
+  .testimonial__speech-bubble {
+    order: 1;
+  }
+
+  .arrow-up {
+    width: 50px;
+    height: 50px;
+    font-size: 30px;
+    line-height: 50px;
+    right: 16px;
+    bottom: 16px;
   }
 }
