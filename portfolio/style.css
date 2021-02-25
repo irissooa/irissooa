@@ -95,11 +95,20 @@ p {
 
 /* Navbar */
 #navbar {
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 16px;
+  background-color: transparent;
+  transition: all var(--animation-duration) ease-in-out;
+  z-index: 1;
+}
+
+#navbar.navbar--dark {
   background-color: var(--color-pink);
+  padding: 8px;
 }
 
 .navbar__logo {
@@ -117,16 +126,13 @@ p {
   margin: 0 4px;
   color: var(--color-white);
   cursor: pointer;
-}
-
-.navbar__menu__item.active {
-  border: 1px solid white;
+  border: 1px solid transparent;
   border-radius: var(--size-border-radius);
 }
 
 .navbar__menu__item:hover {
+  border-color: var(--color-white);
   background-color: var(--color-dark-pink);
-  border-radius: var(--size-border-radius);
 }
 
 .navbar__toggle-btn {
@@ -140,8 +146,9 @@ p {
 
 /* Home */
 #home {
-  background: url('imgs/homebackground.png') center/cover no-repeat;
+  background: url('imgs/home-background.png') center/cover no-repeat;
   padding: 40px;
+  padding-top: 120px;
   text-align: center;
 }
 
@@ -189,7 +196,6 @@ p {
 .major__icon {
   width: 170px;
   height: 170px;
-  /* height만큼 해주면 수직의 중간으로 옴 */
   line-height: 170px;
   font-size: 70px;
   margin: auto;
@@ -307,13 +313,13 @@ p {
   padding: 8px 48px;
 }
 
-.category__btn.active,
+.category__btn.selected,
 .category__btn:hover {
   background-color: var(--color-pink);
   color: var(--color-white);
 }
 
-.category__btn.active .category__count,
+.category__btn.selected .category__count,
 .category__btn:hover .category__count {
   opacity: 1;
   top: 0;
@@ -338,6 +344,13 @@ p {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  opacity: 1;
+  transition: all var(--animation-duration) ease-out;
+}
+
+.work__projects.anim-out {
+  opacity: 0;
+  transform: scale(0.96) translateY(40px);
 }
 
 .project {
@@ -349,6 +362,10 @@ p {
   height: 250px;
   margin: 2px;
   background-color: var(--color-light-white);
+}
+
+.project.invisible {
+  display: none;
 }
 
 .project__img {
@@ -378,7 +395,7 @@ p {
 }
 
 .project__description h3 {
-  color: var(--color-white);
+  color: var(--color-orange);
 }
 
 .project__description h3:after {
@@ -386,9 +403,9 @@ p {
   display: block;
   position: relative;
   left: 50%;
-  width: 25px;
+  width: 50px;
   height: 2px;
-  margin-left: -12px;
+  transform: translateX(-50%);
   margin-top: 8px;
   background-color: var(--color-dark-white);
 }
@@ -461,6 +478,27 @@ p {
   color: var(--color-yellow);
 }
 
+/* Scroll */
+.arrow-up {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  width: 70px;
+  height: 70px;
+  font-size: 50px;
+  color: var(--color-white);
+  background-color: var(--color-pink);
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 300ms ease-in;
+}
+
+.arrow-up.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* For below 768px screen width */
 @media screen and (max-width: 768px) {
   .navbar__toggle-btn {
@@ -470,13 +508,21 @@ p {
   #navbar {
     flex-direction: column;
     align-items: flex-start;
+    background-color: var(--color-pink);
   }
 
+  #navbar.navbar--dark {
+    padding: 16px;
+  }
   .navbar__menu {
     flex-direction: column;
     text-align: center;
     width: 100%;
     display: none;
+  }
+
+  .navbar__menu.open {
+    display: block;
   }
 
   .about__majors {
