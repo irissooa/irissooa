@@ -1,7 +1,4 @@
-### Web Front-end Developer 💻
-🌱 I’m currently learning JavaScript, Vue, TypeScript
-
-📫 How to reach me : xlalfskdl@gmail.com
+### Front-end Developer 💻
 
 ⚡ Stats
 Sooa's GitHub stats
