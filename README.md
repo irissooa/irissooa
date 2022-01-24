@@ -1,8 +1,6 @@
-![header](https://capsule-render.vercel.app/api?type=soft&color=auto&height=150&section=header&text=SooaPark&animation=twinkling&fontSize=90)
-
-<div text-align="center">
-🛠 Tech Stack 🛠 </div>
-<img src="https://img.shields.io/badge/Python-3766AB?style=flat-square&logo=Python&logoColor=white"/>
+Web Front-end Developer 💻
+🌱 I’m currently learning JavaScript, Vue, TypeScript
+📫 How to reach me : xlalfskdl@gmail.com
 
 ⚡ Stats
 Sooa's GitHub stats
